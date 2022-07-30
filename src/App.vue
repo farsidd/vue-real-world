@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h2 v-if="notification.message">{{notification.message}}</h2>
     <div id="nav">
       <router-link :to="{ name: 'EventList' }">Events</router-link> |
       <router-link :to="{ name: 'About' }">About</router-link>
@@ -7,7 +8,11 @@
     <router-view />
   </div>
 </template>
-
+<script>
+export default {
+  inject: ['notification']
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

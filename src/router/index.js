@@ -4,6 +4,8 @@ import About from '@/views/About.vue'
 import EventDetails from '@/views/EventDetails.vue'
 import NotFound from '@/views/NotFound.vue'
 import NetworkError from '@/views/NetworkError.vue'
+//Forms
+import Form from '@/views/Form.vue'
 
 const routes = [
   {
@@ -22,6 +24,11 @@ const routes = [
     path: '/about',
     name: 'About',
     component: About
+  },
+  {
+    path: '/form',
+    name: 'Form',
+    component: Form
   },
   {
     path: '/:catchAll(.*)',

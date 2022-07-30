@@ -35,11 +35,26 @@ export default {
       this.totalEvents = response.headers['x-total-count'];
     }).catch(error => {
         this.$router.push({name:'NetworkError'})
-      
     })
     })
+    },
 
-  },
+    //Another method named: In-Component-Guards. to achieve the same results
+        
+    // beforeRouteUpdate(routeTo,routeFrom,next) {
+    // EventService.getEvents(25,parseInt(routeTo.query.page) || 1).
+    // then(response => {
+   
+        
+    //   this.events = response.data
+    //   this.totalEvents = response.headers['x-total-count'];
+     
+
+    // }).catch(() => {
+    //     // next({name:'NetworkError'})
+    // })
+    // },
+
   computed: {
     hasNextPage() {
       var totalPages = Math.ceil(this.totalEvents/25)

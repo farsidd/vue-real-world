@@ -2,6 +2,7 @@
   <div v-if="event" class="events">
     <h1>{{event.title}}</h1>
     <h3>Status: {{event.completed}}</h3>
+    <button @click="notificationMessage(event.id)">Click Me</button>
   </div>
 </template>
 
@@ -11,6 +12,7 @@ import EventCard from '@/components/EventCard.vue'
 import EventService from '@/services/EventService.js'
 export default {
   name: 'Home',
+  inject: ['notification'],
   components: {
     EventCard
   },
@@ -18,6 +20,14 @@ export default {
     id: {
         type: String,
         required: true
+    }
+  },
+  methods: {
+    notificationMessage(id) {
+      this.notification.message = 'This is the custom notification for event with id: ' + id;
+      setTimeout(() => {
+        this.notification.message = ''
+      },3000)
     }
   },
   data() {
