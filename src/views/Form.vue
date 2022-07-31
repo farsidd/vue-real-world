@@ -3,15 +3,8 @@
     <h1>Create an event</h1>
     <form>
 
-      <label>Select a category</label>
-      <select v-model="event.category">
-        <option
-          v-for="option in categories"
-          :value="option"
-          :key="option"
-          :selected="option === event.category"
-        >{{ option }}</option>
-      </select>
+      <!-- <base-select v-model="event.category" label="Select Categoy" options="categories" /> -->
+      <BaseSelect v-model="event.category" label="Select Categoy" :options="categories" />
 
       <h3>Name & describe your event</h3>
 
@@ -69,16 +62,19 @@
         <label>Live music</label>
       </div>
 
-      <button class="button -fill-gradient" type="submit">Submit</button>
+      <button class="button -fill-gradient" id="test" @click.prevent="test($event)">Submit</button>
     </form>
   </div>
 </template>
 
 <script>
 import BaseInput from "@/components/BaseInput.vue";
+import BaseSelect from '@/components/BaseSelect.vue';
+
 export default {
     components: {
-        BaseInput
+        BaseInput,
+        BaseSelect
     },
   data () {
     return {
@@ -102,6 +98,12 @@ export default {
           music: false
         }
       }
+    }
+  },
+  methods: {
+    test(e)
+    {
+      console.log(e.target.id)
     }
   }
 }
