@@ -2,15 +2,18 @@
   <div>
     <h1>Create an event</h1>
     <form>
-
       <!-- <base-select v-model="event.category" label="Select Categoy" options="categories" /> -->
-      <BaseSelect v-model="event.category" label="Select Categoy" :options="categories" />
+      <BaseSelect
+        v-model="event.category"
+        label="Select Categoy"
+        :options="categories"
+      />
 
       <h3>Name & describe your event</h3>
 
-        <BaseInput type="text" label="Test" v-model="event.title" />
+      <BaseInput type="text" label="Test" v-model="event.title" />
 
-       <BaseInput type="text" label="Description" v-model="event.description" />
+      <BaseInput type="text" label="Description" v-model="event.description" />
 
       <h3>Where is your event?</h3>
 
@@ -24,59 +27,60 @@
 
       <h3>Are pets allowed?</h3>
       <div>
-        <input
-            type="radio"
-            v-model="event.pets"
-            :value="1"
-            name="pets"
-          />
-        <label>Yes</label>
+        <BaseRadio v-model="event.pets" :value="1" type="radio" label="Yes" />
       </div>
 
       <div>
-        <input
-          type="radio"
-          v-model="event.pets"
-          :value="0"
-          name="pets"
-        />
-        <label>No</label>
+        <BaseRadio v-model="event.pets" :value="0" type="radio" label="No" />
       </div>
 
       <h3>Extras</h3>
       <div>
-        <input
-          type="checkbox"
-          v-model="event.extras.catering"
-          class="field"
-        />
-        <label>Catering</label>
+        <BaseCheckbox label="Test" v-model="event.extras.catering" />
       </div>
 
       <div>
-        <input
-          type="checkbox"
-          v-model="event.extras.music"
-          class="field"
+        <h3>Base Radio Button Group</h3>
+        <BaseRadioGroup
+          :vertical="true"
+          name="pets"
+          v-model="event.pets"
+          :options="petOptions"
         />
+      </div>
+
+      <div>
+        <input type="checkbox" v-model="event.extras.music" class="field" />
         <label>Live music</label>
       </div>
 
-      <button class="button -fill-gradient" id="test" @click.prevent="test($event)">Submit</button>
+      <button
+        class="button -fill-gradient"
+        id="test"
+        @click.prevent="test($event)"
+      >
+        Submit
+      </button>
     </form>
   </div>
 </template>
 
 <script>
-import BaseInput from "@/components/BaseInput.vue";
-import BaseSelect from '@/components/BaseSelect.vue';
+import BaseInput from '@/components/BaseInput.vue'
+import BaseSelect from '@/components/BaseSelect.vue'
+import BaseCheckbox from '@/components/BaseCheckbox.vue'
+import BaseRadio from '@/components/BaseRadio.vue'
+import BaseRadioGroup from '@/components/BaseRadioGroup.vue'
 
 export default {
-    components: {
-        BaseInput,
-        BaseSelect
-    },
-  data () {
+  components: {
+    BaseInput,
+    BaseSelect,
+    BaseCheckbox,
+    BaseRadio,
+    BaseRadioGroup,
+  },
+  data() {
     return {
       categories: [
         'sustainability',
@@ -85,32 +89,34 @@ export default {
         'housing',
         'education',
         'food',
-        'community'
+        'community',
       ],
       event: {
         category: '',
         title: '',
         description: '',
         location: '',
-        pets: 1,
+        pets: 0,
         extras: {
           catering: false,
-          music: false
-        }
-      }
+          music: false,
+        },
+      },
+      petOptions: [
+        { label: 'Yes', value: 1 },
+        { label: 'No', value: 0 },
+      ],
     }
   },
   methods: {
-    test(e)
-    {
+    test(e) {
       console.log(e.target.id)
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style>
-
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -118,7 +124,7 @@ html {
 }
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -150,7 +156,7 @@ h5,
 h6 {
   display: flex;
   align-items: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 h1 {
   font-size: 50px;
@@ -224,7 +230,7 @@ optgroup,
 select,
 textarea {
   display: inline-flex;
-  font-family: "Open sans", sans-serif;
+  font-family: 'Open sans', sans-serif;
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
@@ -238,22 +244,22 @@ select {
   text-transform: none;
 }
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: none;
 }
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring {
   outline: 2px solid #39b982;
 }
 label {
@@ -277,36 +283,36 @@ textarea {
   overflow: auto;
   font-size: 20px;
 }
-[type="checkbox"],
-[type="radio"] {
+[type='checkbox'],
+[type='radio'] {
   box-sizing: border-box;
   padding: 0;
   margin-right: 0.5rem;
 }
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
-[type="search"]::-webkit-search-decoration {
+[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-[type="text"],
-[type="number"],
-[type="search"],
-[type="password"] {
+[type='text'],
+[type='number'],
+[type='search'],
+[type='password'] {
   height: 52px;
   width: 100%;
   padding: 0 10px;
   font-size: 20px;
 }
-[type="text"]:focus,
-[type="number"]:focus,
-[type="search"]:focus,
-[type="password"]:focus {
+[type='text']:focus,
+[type='number']:focus,
+[type='search']:focus,
+[type='password']:focus {
   border-color: #39b982;
 }
 ::-webkit-file-upload-button {
