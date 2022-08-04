@@ -5,6 +5,7 @@ import EventDetails from '@/views/EventDetails.vue'
 import NotFound from '@/views/NotFound.vue'
 import NetworkError from '@/views/NetworkError.vue'
 import FormValidation from '@/views/FormValidation.vue'
+import ComponentPattern from '@/views/ComponentPattern.vue'
 //Forms
 import Form from '@/views/Form.vue'
 
@@ -35,6 +36,11 @@ const routes = [
     path: '/form-validation',
     name: 'FormValidation',
     component: FormValidation
+  },
+  {
+    path: '/component-pattern',
+    name: 'ComponentPattern',
+    component: ComponentPattern
   },
   {
     path: '/:catchAll(.*)',
