@@ -6,6 +6,7 @@ import NotFound from '@/views/NotFound.vue'
 import NetworkError from '@/views/NetworkError.vue'
 import FormValidation from '@/views/FormValidation.vue'
 import ComponentPattern from '@/views/ComponentPattern.vue'
+import Animation from '@/views/Animation.vue'
 //Forms
 import Form from '@/views/Form.vue'
 
@@ -41,6 +42,11 @@ const routes = [
     path: '/component-pattern',
     name: 'ComponentPattern',
     component: ComponentPattern
+  },
+  {
+    path: '/animation',
+    name: 'Animation',
+    component: Animation
   },
   {
     path: '/:catchAll(.*)',
