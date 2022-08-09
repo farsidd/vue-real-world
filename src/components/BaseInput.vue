@@ -1,22 +1,27 @@
 <template>
-  <label>{{label}}</label>
-  <input v-bind="{...$attrs, onChange: ($event) => {$emit('update:modelValue', $event.target.value)}}" 
-
-  @input="$emit('update:modelValue', $event.target.value)"
-   />
+  <label>{{ label }}</label>
+  <input
+    v-bind="{
+      ...$attrs,
+      onChange: $event => {
+        $emit('update:modelValue', $event.target.value)
+      }
+    }"
+    @input="$emit('update:modelValue', $event.target.value)"
+  />
 </template>
 
 <script>
 export default {
-    props: {
-        label: {
-            type: String,
-            default: ''
-        },
-        modelValue: {
-            type: [String,Number],
-            default: ''
-        }
+  props: {
+    label: {
+      type: String,
+      default: ''
+    },
+    modelValue: {
+      type: [String, Number],
+      default: ''
     }
+  }
 }
 </script>

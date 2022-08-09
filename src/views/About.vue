@@ -1,11 +1,11 @@
 <template>
-  <div class="about" >
+  <div class="about">
     <a :href="urll">Login</a>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 
 export default {
   // data() {
@@ -14,10 +14,8 @@ export default {
   //   }
   // },
   // created() {
-
   // },
   // mounted() {
-  
   //   if(this.$route.query.code) {
   //     const url = new URL('https://fbadsapi.sohaib.pk/facebook/callback')
   //     url.search = window.location.search
@@ -29,7 +27,6 @@ export default {
   //   axios.get('https://fbadsapi.sohaib.pk/facebook/login').then(res => {
   //     this.urll=res.data;
   //   }).catch(err => {console.log(err)})
-
   // }
 }
 </script>

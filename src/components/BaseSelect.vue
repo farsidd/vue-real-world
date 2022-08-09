@@ -1,6 +1,13 @@
 <template>
-  <label>{{label}}</label>
-  <select v-bind="{...$attrs, onChange: ($event) => {$emit('update:modelValue', $event.target.value)}}">
+  <label>{{ label }}</label>
+  <select
+    v-bind="{
+      ...$attrs,
+      onChange: $event => {
+        $emit('update:modelValue', $event.target.value)
+      }
+    }"
+  >
     <option
       v-for="option in options"
       :value="option"
@@ -14,19 +21,19 @@
 
 <script>
 export default {
-    props: {
-        label: {
-            type: String,
-            required: true
-        },
-        modelValue: {
-            type: [String, Number],
-            required: true
-        },
-        options: {
-            type: Array,
-            required: true
-        }
+  props: {
+    label: {
+      type: String,
+      required: true
+    },
+    modelValue: {
+      type: [String, Number],
+      required: true
+    },
+    options: {
+      type: Array,
+      required: true
     }
+  }
 }
 </script>

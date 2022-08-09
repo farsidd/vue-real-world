@@ -2,11 +2,19 @@
   <div class="events">
     <h1>Events For Good</h1>
     <EventCard v-for="event in events" :key="event.id" :event="event" />
-    <router-link :to="{name: 'EventList', query: {page: page-1}}"
-    v-if="page!=1" rel="prev">Previous</router-link>
+    <router-link
+      :to="{ name: 'EventList', query: { page: page - 1 } }"
+      v-if="page != 1"
+      rel="prev"
+      >Previous</router-link
+    >
 
-    <router-link v-if="hasNextPage" :to="{name: 'EventList', query: {page: page+1}}"
-    rel="next">Next</router-link>
+    <router-link
+      v-if="hasNextPage"
+      :to="{ name: 'EventList', query: { page: page + 1 } }"
+      rel="next"
+      >Next</router-link
+    >
   </div>
 </template>
 
@@ -29,35 +37,35 @@ export default {
   },
   created() {
     watchEffect(() => {
-    this.events = null
-    EventService.getEvents(25,this.page).then(response => {
-      this.events = response.data
-      this.totalEvents = response.headers['x-total-count'];
-    }).catch(error => {
-        this.$router.push({name:'NetworkError'})
+      this.events = null
+      EventService.getEvents(25, this.page)
+        .then(response => {
+          this.events = response.data
+          this.totalEvents = response.headers['x-total-count']
+        })
+        .catch(error => {
+          this.$router.push({ name: 'NetworkError' })
+        })
     })
-    })
-    },
+  },
 
-    //Another method named: In-Component-Guards. to achieve the same results
-        
-    // beforeRouteUpdate(routeTo,routeFrom,next) {
-    // EventService.getEvents(25,parseInt(routeTo.query.page) || 1).
-    // then(response => {
-   
-        
-    //   this.events = response.data
-    //   this.totalEvents = response.headers['x-total-count'];
-     
+  //Another method named: In-Component-Guards. to achieve the same results
 
-    // }).catch(() => {
-    //     // next({name:'NetworkError'})
-    // })
-    // },
+  // beforeRouteUpdate(routeTo,routeFrom,next) {
+  // EventService.getEvents(25,parseInt(routeTo.query.page) || 1).
+  // then(response => {
+
+  //   this.events = response.data
+  //   this.totalEvents = response.headers['x-total-count'];
+
+  // }).catch(() => {
+  //     // next({name:'NetworkError'})
+  // })
+  // },
 
   computed: {
     hasNextPage() {
-      var totalPages = Math.ceil(this.totalEvents/25)
+      var totalPages = Math.ceil(this.totalEvents / 25)
       return this.page < totalPages
     }
   }

@@ -1,12 +1,14 @@
-import { createApp, reactive } from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import vuetify from './plugins/vuetify'
+import { loadFonts } from './plugins/webfontloader'
 
-const notification = reactive({message: ''});
+loadFonts()
 
 createApp(App)
-  .use(store)
   .use(router)
-  .provide('notification', notification)
+  .use(store)
+  .use(vuetify)
   .mount('#app')

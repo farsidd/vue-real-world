@@ -29,7 +29,6 @@
           />
         </div>
 
-
         <div
           class="input-errors"
           v-for="error of v$.password.$errors"
@@ -47,7 +46,6 @@
           />
         </div>
 
-
         <div
           class="input-errors"
           v-for="error of v$.confirm_password.$errors"
@@ -55,7 +53,6 @@
         >
           <div class="error-msg">{{ error.$message }}</div>
         </div>
-
 
         <a href="#" class="link">Forgot Your Password?</a>
       </div>
@@ -69,25 +66,40 @@
 
 <script>
 import useVuelidate from '@vuelidate/core'
-import { required, email, sameAs, minLength, helpers } from '@vuelidate/validators'
+import {
+  required,
+  email,
+  sameAs,
+  minLength,
+  helpers
+} from '@vuelidate/validators'
 export default {
   data() {
     return {
       email: '',
       password: '',
       confirm_password: '',
-      v$: useVuelidate(),
+      v$: useVuelidate()
     }
   },
   validations() {
     return {
       email: { required, email },
       password: { required, minLength: minLength(8) },
-      confirm_password: { required:helpers.withMessage('Confirm Password Field is required.', required), sameAsPassword: helpers.withMessage('Password Must Match', sameAs(this.password))  },
+      confirm_password: {
+        required: helpers.withMessage(
+          'Confirm Password Field is required.',
+          required
+        ),
+        sameAsPassword: helpers.withMessage(
+          'Password Must Match',
+          sameAs(this.password)
+        )
+      }
     }
   },
   methods: {
-  submitForm() {
+    submitForm() {
       this.v$.$validate()
       console.log(this.v$)
       if (!this.v$.$error) {
@@ -95,11 +107,9 @@ export default {
       } else {
         alert('form has error')
       }
-    },
+    }
   },
-  mounted() {
-    
-  }
+  mounted() {}
 }
 </script>
 

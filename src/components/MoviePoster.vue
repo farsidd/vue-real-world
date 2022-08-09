@@ -11,22 +11,22 @@ export default {
   props: {
     name: {
       type: String,
-      required: true,
+      required: true
     },
     duration: {
       type: String,
-      default: '90',
+      default: '90'
     },
     image: {
       type: String,
-      validator: (propValue) => {
+      validator: propValue => {
         const hasImageDirectory = propValue.indexOf('/images/') > -1
         const isPNG = propValue.endsWith('.png')
         const isJPG = propValue.endsWith('.jpeg') || propValue.endsWith('.jpg')
         const hasValidExtension = isPNG || isJPG
         return hasImageDirectory && hasValidExtension
-      },
-    },
-  },
+      }
+    }
+  }
 }
 </script>

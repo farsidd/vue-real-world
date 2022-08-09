@@ -78,7 +78,7 @@ export default {
     BaseSelect,
     BaseCheckbox,
     BaseRadio,
-    BaseRadioGroup,
+    BaseRadioGroup
   },
   data() {
     return {
@@ -89,7 +89,7 @@ export default {
         'housing',
         'education',
         'food',
-        'community',
+        'community'
       ],
       event: {
         category: '',
@@ -99,20 +99,20 @@ export default {
         pets: 0,
         extras: {
           catering: false,
-          music: false,
-        },
+          music: false
+        }
       },
       petOptions: [
         { label: 'Yes', value: 1 },
-        { label: 'No', value: 0 },
-      ],
+        { label: 'No', value: 0 }
+      ]
     }
   },
   methods: {
     test(e) {
       console.log(e.target.id)
-    },
-  },
+    }
+  }
 }
 </script>
 

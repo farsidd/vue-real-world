@@ -31,12 +31,11 @@ Ususally this kind of transition implement of api call -->
     </div>
     <div>
       <h3>Tweening | Manage State With Animation Realtime</h3>
-    <div :style="{ width: tweenedNumber + 'px' }" class="bar">
-      <span>{{ tweenedNumber.toFixed(0) }}</span>
+      <div :style="{ width: tweenedNumber + 'px' }" class="bar">
+        <span>{{ tweenedNumber.toFixed(0) }}</span>
+      </div>
+      <h3 v-if="greaterThan600">Value Greater Than 600</h3>
     </div>
-    <h3 v-if="greaterThan600">Value Greater Than 600</h3>
-    </div>
-
   </div>
 </template>
 
@@ -53,8 +52,7 @@ export default {
     }
   },
   watch: {
-    number(newValue)
-    {
+    number(newValue) {
       gsap.to(this.$data, {
         duration: 1,
         ease: 'circ-out',
@@ -79,12 +77,12 @@ export default {
         opacity: 1,
         scale: 1,
         ease: 'bounce.out',
-        onComplete: done,
+        onComplete: done
       })
     },
     randomNumber() {
       this.number = Math.floor(Math.random() * (800 - 0))
-    },
+    }
   },
   mounted() {
     gsap.from('.card', {
@@ -93,14 +91,14 @@ export default {
       scale: 0,
       y: 200,
       ease: 'power1',
-      stagger: 0.1,
+      stagger: 0.1
     })
   },
   created() {
     setInterval(this.randomNumber, 1500)
   },
   computed: {
-    greaterThan600(){
+    greaterThan600() {
       return this.tweenedNumber > 600
     }
   }

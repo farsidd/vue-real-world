@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '@/views/HomeView.vue'
 import EventList from '@/views/EventList.vue'
 import About from '@/views/About.vue'
 import EventDetails from '@/views/EventDetails.vue'
@@ -12,10 +13,15 @@ import Form from '@/views/Form.vue'
 
 const routes = [
   {
+    path: '/',
+    name: 'HomeView',
+    component: HomeView,
+  },
+  {
     path: '/events',
     name: 'EventList',
     component: EventList,
-    props: route => ({page: parseInt(route.query.page) || 1})
+    props: route => ({ page: parseInt(route.query.page) || 1 })
   },
   {
     path: '/event/:id',
@@ -62,7 +68,7 @@ const routes = [
   {
     path: '/404/network',
     name: 'NetworkError',
-    component: NetworkError,
+    component: NetworkError
   }
 ]
 
