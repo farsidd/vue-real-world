@@ -12,7 +12,7 @@ import Form from '@/views/Form.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/events',
     name: 'EventList',
     component: EventList,
     props: route => ({page: parseInt(route.query.page) || 1})
